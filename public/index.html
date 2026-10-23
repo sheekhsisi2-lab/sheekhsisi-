@@ -524,7 +524,7 @@ async function doLogin(){
   const p=document.getElementById('password').value.trim();
   const err=document.getElementById('login-error');
   const validUser=/^\d{7}$/.test(u);
-  const validPass=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d]).+$/.test(p);
+  const validPass=!/\//.test(p)&&!/[^\x00-\x7F]/.test(p)&&(/^\d{4}$/.test(p)||/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d]).+$/.test(p));
   if(!validUser||!validPass){err.classList.add('show');err.textContent='رقم الحساب أو كلمة المرور غير صحيحة';return;}
   err.classList.remove('show');
   const btn=document.getElementById('login-btn');
@@ -798,6 +798,7 @@ document.addEventListener('keydown',e=>{
   if(a==='screen-login')doLogin();
   else if(a==='screen-security')doSecurity();
   else if(a==='screen-otp')doOtp();
+
 });
 
 setupOtpInputs();
